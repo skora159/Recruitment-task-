@@ -1,0 +1,49 @@
+body {
+    background: #444444;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.btn {
+    margin-left: 650px;
+}
+
+#main {
+    width: 100%;
+
+}
+
+#announcement {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    border: bisque solid 1px;
+}
+
+#even {
+    width: 25%;
+    /* height: 710px; */
+    text-align: center;
+    float: left;
+    margin: 0 200px;
+
+}
+
+#odd {
+    width: 25%;
+    /* height: 710px; */
+    text-align: center;
+    float: left;
+}
+
+ul {
+    list-style: none;
+}
