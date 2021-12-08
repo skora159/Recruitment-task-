@@ -1,12 +1,21 @@
 body {
     background: #444444;
-    color: white;
+    color: #DCDCDC;
     font-family: 'Open Sans', sans-serif;
 
 }
 
 .btn {
-    margin-left: 650px;
+    font-size: 25px;
+    width: 100px;
+    margin: 0px 710px;
+    background-color: #6495ED;
+    color: #1E3E3E;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #4273DB;
 }
 
 #main {
@@ -14,11 +23,7 @@ body {
 
 }
 
-#announcement {
-    width: 100vw;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 h2 {
     text-align: center;
@@ -30,20 +35,20 @@ h3 {
 
 #even {
     width: 25%;
-    /* height: 710px; */
     text-align: center;
     float: left;
-    margin: 0 200px;
+    margin: 0 190px;
 
 }
 
 #odd {
     width: 25%;
-    /* height: 710px; */
     text-align: center;
     float: left;
+    margin: 0 190px;
 }
 
 ul {
     list-style: none;
+    padding-left: 0;
 }
