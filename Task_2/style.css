@@ -1,0 +1,79 @@
+body {
+    background: #334A0D;
+}
+
+.containerChoice {
+    margin-left: 250px;
+}
+
+.column {
+    float: left;
+    margin-left: 15px;
+    padding-top: 15px;
+
+}
+
+
+p {
+    margin-top: 0;
+}
+
+
+.book {
+    margin: 0 15px;
+}
+
+#radioButtons {
+    margin-left: 5px;
+
+
+}
+
+#labelRadio {
+    margin-bottom: 15px;
+}
+
+button {
+    margin: 5px 15px;
+    width: 150px;
+    height: 40px;
+    background: #FF8C00;
+    color: #334A0D;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #DD6A00;
+}
+
+label,
+p {
+    color: #ffffff;
+
+}
+
+#line {
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin: 15px 0;
+}
+
+.containerDisplay {
+    margin: 0 150px;
+
+}
+
+.columnDisplay {
+    float: left;
+    width: 300px;
+    height: 400px;
+
+}
+
+.display {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    color: #ffffff;
+}
