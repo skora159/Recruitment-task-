@@ -1,5 +1,7 @@
+const button = document.getElementById('button');
+
 let books = [];
-let id = 0;
+let id = 1;
 class Book {
     constructor(id, title, author, priority, category) {
 
@@ -41,52 +43,67 @@ const add = () => {
 
 const displayBooks = (books) => {
     const priority = document.getElementsByName('priority');
-    const titleUl = document.getElementById('titleUl');
-    const authorUl = document.getElementById('authorUl');
-    const priorityUl = document.getElementById('priorityUl');
-    const categoryUl = document.getElementById('categoryUl');
+
+    const containerDisplay = document.querySelector('div.containerDisplay');
+    const displayedBook = document.createElement('div')
+
+    const descriptionsBookTitle = document.createElement('div');
+    const descriptionsBookAuthor = document.createElement('div');
+    const descriptionsBookPriority = document.createElement('div');
+    const descriptionsBookCategory = document.createElement('div');
+
+    displayedBook.setAttribute('id', id);
+    displayedBook.setAttribute('class', 'displayedBook');
+    descriptionsBookTitle.setAttribute('class', 'descriptions');
+    descriptionsBookAuthor.setAttribute('class', 'descriptions');
+    descriptionsBookPriority.setAttribute('class', 'descriptions');
+    descriptionsBookCategory.setAttribute('class', 'descriptions');
 
     id = id + 1;
 
-    const titleLi = document.createElement('li');
-    const authorLi = document.createElement('li');
-    const priorityLi = document.createElement('li');
-    const categoryLi = document.createElement('li');
-
-    titleLi.setAttribute('id', id);
-    authorLi.setAttribute('id', id);
-    priorityLi.setAttribute('id', id);
-    categoryLi.setAttribute('id', id);
-
-    titleLi.innerText += books.title;
-    authorLi.innerText += books.author;
-    categoryLi.innerText += books.category;
+    descriptionsBookTitle.innerText += books.title;
+    descriptionsBookAuthor.innerText += books.author;
 
     for (let i = 0; i < priority.length; i++) {
         if (priority[i].checked) {
             console.log(priority[i].value);
-            priorityLi.innerText += books.priority[i].value;
+            descriptionsBookPriority.innerText += books.priority[i].value;
         }
     }
 
-    titleLi.setAttribute("onclick", "remove(this)");
+    descriptionsBookCategory.innerText += books.category;
 
-    titleUl.appendChild(titleLi);
-    authorUl.appendChild(authorLi);
-    priorityUl.appendChild(priorityLi);
-    categoryUl.appendChild(categoryLi);
+    displayedBook.setAttribute("onclick", "remove(this)");
+
+    containerDisplay.appendChild(displayedBook);
+    displayedBook.appendChild(descriptionsBookTitle);
+    displayedBook.appendChild(descriptionsBookAuthor);
+    displayedBook.appendChild(descriptionsBookPriority);
+    displayedBook.appendChild(descriptionsBookCategory);
 
 };
 
-function remove(bookLi) {
+function remove(book) {
 
-    let element = bookLi;
+    let element = book;
     element.remove();
 
     for (let i = 0; i < books.length; i++) {
+
         if (element.id == books[i].id) {
 
             books.splice(i, 1);
         }
     }
+};
+
+const clear = () => {
+
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+
+    title.value = '';
+    author.value = '';
 }
+
+button.addEventListener('click', clear)

@@ -20,7 +20,7 @@
                 <label>
                     <p>Tytuł</p>
                 </label>
-                <input type="text" id="title" required>
+                <input type="text" id="title" name="title" required />
 
             </div>
 
@@ -35,7 +35,7 @@
                 <label>
                     <p>Autor </p>
                 </label>
-                <input type="text" id="author" required>
+                <input type="text" id="author" required />
 
             </div>
 
@@ -74,7 +74,7 @@
 
         <div class="column">
 
-            <button type="button" onclick="add()">Dodaj</button>
+            <button type="button" onclick="add()" id="button">Dodaj</button>
 
         </div>
 
@@ -86,58 +86,35 @@
 
     <div class="containerDisplay">
 
-        <div class="columnDisplay">
+        <div id="label">
 
-            <label>Tytuł </label>
+            <div class="descriptions">
 
-            <ul class="display" id="titleUl">
+                <p>Tytuł</p>
 
-                <li>xx</li>
-                <li>xx</li>
+            </div>
 
-            </ul>
+            <div class="descriptions">
 
+                <p>Autor</p>
 
-        </div>
+            </div>
 
-        <div class="columnDisplay">
+            <div class="descriptions">
 
-            <label>Autor </label>
+                <p>Priorytet przeczytania książki</p>
 
-            <ul class="display" id="authorUl">
+            </div>
 
-                <li>xxx</li>
-                <li>xxx</li>
+            <div class="descriptions">
 
-            </ul>
+                <p>Kategoria</p>
 
-        </div>
-
-        <div class="columnDisplay">
-
-            <label>Priorytet przeczytania książki</label>
-
-            <ul class="display" id="priorityUl">
-
-                <li>xx</li>
-                <li>xx</li>
-
-            </ul>
+            </div>
 
         </div>
 
-        <div class="columnDisplay">
 
-            <label>Kategoria</label>
-
-            <ul class="display" id="categoryUl">
-
-                <li>xxx</li>
-                <li>xxx</li>
-
-            </ul>
-
-        </div>
 
     </div>
 
