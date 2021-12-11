@@ -1,6 +1,11 @@
 const button = document.getElementById('button');
 
 let books = [];
+
+
+// displayLocalStorage();
+
+
 let id = 1;
 class Book {
     constructor(id, title, author, priority, category) {
@@ -23,6 +28,7 @@ const add = () => {
     const category = document.getElementById('category');
     const textCategory = category.options[category.selectedIndex].text;
 
+
     for (let i = 0; i < priority.length; i++) {
         if (priority[i].checked) {
             console.log(priority[i].value);
@@ -35,17 +41,20 @@ const add = () => {
     let newBook = new Book(id, title, author, priority, textCategory);
 
 
+
+
     books.push(newBook);
     console.log(books);
     displayBooks(newBook);
+
+    window.localStorage.setItem('book', JSON.stringify(books));
 
 };
 
 const displayBooks = (books) => {
     const priority = document.getElementsByName('priority');
-
     const containerDisplay = document.querySelector('div.containerDisplay');
-    const displayedBook = document.createElement('div')
+    const displayedBook = document.createElement('div');
 
     const descriptionsBookTitle = document.createElement('div');
     const descriptionsBookAuthor = document.createElement('div');
@@ -73,6 +82,9 @@ const displayBooks = (books) => {
 
     descriptionsBookCategory.innerText += books.category;
 
+    title.value = '';
+    author.value = '';
+
     displayedBook.setAttribute("onclick", "remove(this)");
 
     containerDisplay.appendChild(displayedBook);
@@ -96,14 +108,3 @@ function remove(book) {
         }
     }
 };
-
-const clear = () => {
-
-    const title = document.getElementById('title');
-    const author = document.getElementById('author');
-
-    title.value = '';
-    author.value = '';
-}
-
-button.addEventListener('click', clear)
