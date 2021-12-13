@@ -3,10 +3,8 @@ const button = document.getElementById('button');
 let books = [];
 
 
-// displayLocalStorage();
 
-
-let id = 1;
+id = Date.now();
 class Book {
     constructor(id, title, author, priority, category) {
 
@@ -20,46 +18,39 @@ class Book {
 
 }
 
-const add = () => {
+const onSubmit = () => {
 
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
-    const priority = document.getElementsByName('priority');
-    const category = document.getElementById('category');
-    const textCategory = category.options[category.selectedIndex].text;
+    const priority = document.querySelectorAll('.priority-input');
+    const category = document.getElementById('category').value;
 
+    let activeRadioButtonPriority
 
-    for (let i = 0; i < priority.length; i++) {
-        if (priority[i].checked) {
-            console.log(priority[i].value);
+    priority.forEach(radioButton => {
 
+        if (radioButton.checked) {
+            console.log(radioButton.value);
+
+            activeRadioButtonPriority = radioButton.value;
         }
-    }
 
+    });
 
+    add(id, title, author, parseInt(activeRadioButtonPriority), category);
 
-    let newBook = new Book(id, title, author, priority, textCategory);
-
-
-
-
-    books.push(newBook);
-    console.log(books);
-    displayBooks(newBook);
-
-    window.localStorage.setItem('book', JSON.stringify(books));
 
 };
 
-const displayBooks = (books) => {
-    const priority = document.getElementsByName('priority');
-    const containerDisplay = document.querySelector('div.containerDisplay');
+const displayBook = (book) => {
+    const containerDisplay = document.querySelector('.containerDisplay');
     const displayedBook = document.createElement('div');
-
     const descriptionsBookTitle = document.createElement('div');
     const descriptionsBookAuthor = document.createElement('div');
     const descriptionsBookPriority = document.createElement('div');
     const descriptionsBookCategory = document.createElement('div');
+
+    id = id + 1;
 
     displayedBook.setAttribute('id', id);
     displayedBook.setAttribute('class', 'displayedBook');
@@ -68,24 +59,15 @@ const displayBooks = (books) => {
     descriptionsBookPriority.setAttribute('class', 'descriptions');
     descriptionsBookCategory.setAttribute('class', 'descriptions');
 
-    id = id + 1;
-
-    descriptionsBookTitle.innerText += books.title;
-    descriptionsBookAuthor.innerText += books.author;
-
-    for (let i = 0; i < priority.length; i++) {
-        if (priority[i].checked) {
-            console.log(priority[i].value);
-            descriptionsBookPriority.innerText += books.priority[i].value;
-        }
-    }
-
-    descriptionsBookCategory.innerText += books.category;
+    descriptionsBookTitle.innerText += book.title;
+    descriptionsBookAuthor.innerText += book.author;
+    descriptionsBookPriority.innerText += book.priority;
+    descriptionsBookCategory.innerText += book.category;
 
     title.value = '';
     author.value = '';
 
-    displayedBook.setAttribute("onclick", "remove(this)");
+    // displayedBook.setAttribute("onclick", "remove(this)");
 
     containerDisplay.appendChild(displayedBook);
     displayedBook.appendChild(descriptionsBookTitle);
@@ -95,16 +77,78 @@ const displayBooks = (books) => {
 
 };
 
-function remove(book) {
+// function remove(book) {
 
-    let element = book;
-    element.remove();
+//     let element = book;
+//     element.remove();
 
-    for (let i = 0; i < books.length; i++) {
+//     const bookLS = JSON.parse(localStorage.getItem('books'));
 
-        if (element.id == books[i].id) {
 
-            books.splice(i, 1);
-        }
+// for (let i = 0; i < books.length; i++) {
+//     console.log(bookLS[i].id);
+//     if (element.id == books[i].id) {
+
+
+//         books.splice(i, 1);
+//     }
+// }
+
+// for (let j = 0; j < books.length; j++) {
+
+//     if (element.id == bookLS[j].id) {
+
+//         bookLS.splice(j, 1);
+
+//     }
+
+// }
+//     window.localStorage.setItem('books', JSON.stringify(bookLS));
+// };
+
+function loadPages() {
+
+    const books = localStorage.getItem('books');
+    if (books) {
+
+        JSON.parse(books).forEach((book) => {
+            add(book.id, book.title, book.author, book.priority, book.category);
+        })
     }
 };
+
+function validate() {
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    let isValid = true;
+
+    if (!title.value) {
+        title.classList.add('no-valid');
+        isValid = false;
+
+    } else {
+        title.classList.remove('no-valid');
+    }
+    if (!author.value) {
+        author.classList.add('no-valid');
+        isValid = false;
+
+    } else {
+        author.classList.remove('no-valid');
+    }
+
+    if (isValid) {
+        onSubmit();
+    }
+
+}
+
+function add(id, title, author, priority, category) {
+
+    let newBook = new Book(id, title, author, priority, category);
+
+    books.push(newBook);
+    displayBook(newBook);
+    window.localStorage.setItem('books', JSON.stringify(books));
+
+}

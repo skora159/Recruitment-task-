@@ -9,73 +9,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="loadPages()">
 
     <div class="containerChoice">
 
-        <div class="column">
-
-            <div class="book">
-
-                <label>
-                    <p>Tytuł</p>
-                </label>
-                <input type="text" id="title" name="title" required />
-
+        <form>
+            <div class="column">
+                <div class="book">
+                    <label>
+                        <p>Tytuł</p>
+                    </label>
+                    <input type="text" id="title" name="title" required />
+                </div>
             </div>
 
-
-        </div>
-
-        <div class="column">
-
-
-            <div class="book">
-
-                <label>
-                    <p>Autor </p>
-                </label>
-                <input type="text" id="author" required />
-
+            <div class="column">
+                <div class="book">
+                    <label>
+                        <p>Autor </p>
+                    </label>
+                    <input type="text" id="author" required />
+                </div>
             </div>
-
-        </div>
+        </form>
 
         <div class="column">
-
             <div id="labelRadio">
-
                 <label>Priorytet przeczytania książki </label>
-
             </div>
-
             <div id="radioButtons">
-
-                <label>1 <input type="radio" value="1" name="priority" id="" checked></label>
-                <label>2 <input type="radio" value="2" name="priority" id=""></label>
-                <label>3 <input type="radio" value="3" name="priority" id=""></label>
-                <label>4 <input type="radio" value="4" name="priority" id=""></label>
-                <label>5 <input type="radio" value="5" name="priority" id=""></label>
-
+                <label>1 <input type="radio" value="1" name="priority" class="priority-input" checked></label>
+                <label>2 <input type="radio" value="2" name="priority" class="priority-input"></label>
+                <label>3 <input type="radio" value="3" name="priority" class="priority-input"></label>
+                <label>4 <input type="radio" value="4" name="priority" class="priority-input"></label>
+                <label>5 <input type="radio" value="5" name="priority" class="priority-input"></label>
             </div>
-
         </div>
 
         <div class="column">
-
             <p>Kategoria</p>
             <select id="category">
-                <option value="crim">Kryminał</option>
-                <option value="hor">Horron</option>
-                <option value="rom">Romans</option>
+                <option value="Kryminal">Kryminał</option>
+                <option value="Horror">Horron</option>
+                <option value="Romans">Romans</option>
             </select>
-
         </div>
 
         <div class="column">
-
-            <button type="button" onclick="add()" id="button">Dodaj</button>
-
+            <button type="submit" onclick="validate()" id="button">Dodaj</button>
         </div>
 
         <div style="clear:both;"></div>
@@ -89,32 +70,22 @@
         <div id="label">
 
             <div class="descriptions">
-
                 <p>Tytuł</p>
-
             </div>
 
             <div class="descriptions">
-
                 <p>Autor</p>
-
             </div>
 
             <div class="descriptions">
-
                 <p>Priorytet przeczytania książki</p>
-
             </div>
 
             <div class="descriptions">
-
                 <p>Kategoria</p>
-
             </div>
 
         </div>
-
-
 
     </div>
 

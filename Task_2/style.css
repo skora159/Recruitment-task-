@@ -87,3 +87,9 @@ p {
 .displayedBook:hover {
     background: #223A0C;
 }
+
+
+
+.no-valid {
+    border: 1px solid red;
+}
